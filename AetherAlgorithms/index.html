@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AETHER ALGORITHMS | Next-Gen Data Analytics</title>
+
+  <!-- リセットCSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
+
+  <!-- style.css -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anta&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js"
+    }
+  }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+</head>
+
+<body data-theme="dark">
+  <div id="hover-bg">
+    <div class="bg-image active"></div>
+    <div class="bg-image"></div>
+  </div>
+
+  <div id="bg-layer">
+    <canvas id="aether-3d"></canvas>
+    <canvas id="defaultCanvas0"></canvas>
+    <div id="bg-overlay"></div>
+  </div>
+
+  <!-- ローディング画面 -->
+  <div id="loading-screen">
+    <div class="loader"></div>
+  </div>
+
+  <header>
+    <a href="#" class="logo fade-in delay-1">
+      <span class="logo-icon">
+        <svg class="logo-svg" viewBox="0 0 100 100">
+          <circle class="outer" cx="50" cy="50" r="42" />
+          <circle class="inner" cx="50" cy="50" r="20" />
+        </svg>
+      </span> <span class="logo-text">AETHER <span class="thin">ALGORITHMS</span>
+      </span>
+    </a>
+    
+    <!-- ハンバーガーメニュー -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- ナビゲーション -->
+    <nav class="fade-in delay-2">
+      <a href="#services-section" class="nav-item">SERVICES</a>
+      <a href="#projects-section" class="nav-item">PROJECTS</a>
+      <a href="#contact-section" class="nav-item">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 class="main-title fade-in delay-3">Decoding the Unseen.</h1>
+      <p class="subtitle fade-in delay-4">
+        膨大なデータの中に潜む法則性を、独自の幾何学アルゴリズムで可視化する。</p>
+      <div class="scroll-hint delay-4">
+        <span>SCROLL TO EXPLORE</span>
+        <span class="hint-arrow">↓</span>
+      </div>
+    </section>
+
+    <section class="services reveal" id="services-section">
+      <h2 class="section-title">CORE SERVICES</h2>
+      <div class="service-grid">
+
+        <div class="service-card reveal" data-image="bg-1" data-modal="predictive">
+          <div class="card-icon">⧉</div>
+          <div class="card-content">
+            <h3>Predictive Analytics</h3>
+            <p>多次元データの相関関係を抽出し、未来の市場動向をシミュレーションします。</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal" data-image="bg-2" data-modal="optimization">
+          <div class="card-icon">⧇</div>
+          <div class="card-content">
+            <h3>Structural Optimization</h3>
+            <p>幾何学的なアルゴリズムを用いて、最短かつ堅牢な構造を設計します。</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal" data-image="bg-3" data-modal="generative">
+          <div class="card-icon">⧈</div>
+          <div class="card-content">
+            <h3>Generative Insight</h3>
+            <p>AIがデータの深層から新しい価値を生成し、意思決定を加速させます。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="projects reveal" id="projects-section">
+      <h2 class="section-title">SELECTED PROJECTS</h2>
+      <div class="project-list">
+
+        <div class="project-item reveal" data-modal="traffic">
+          <div class="project-info">
+            <span class="project-num">01</span>
+            <h3>Urban Traffic Simulation</h3>
+            <p>都市の交通流を独自の幾何学モデルで解析し、渋滞を30%削減するアルゴリズムを開発。</p>
+          </div>
+        </div>
+
+        <div class="project-item reveal" data-modal="finance">
+          <div class="project-info">
+            <span class="project-num">02</span>
+            <h3>Financial Risk Topology</h3>
+            <p>金融市場の複雑な相関関係を多次元トポロジーで可視化し、リスクの予兆を検知。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contact reveal" id="contact-section">
+      <h2 class="section-title">CONTACT</h2>
+      <div class="contact-container">
+        <p class="contact-lead">プロジェクトの相談、アルゴリズムの解析依頼など、お気軽にお問い合わせください。</p>
+
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="contact-name">NAME</label>
+            <input type="text" id="contact-name" name="name" placeholder="大福 太郎" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">EMAIL</label>
+            <input type="email" id="contact-email" name="email" placeholder="example@aether.com" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">MESSAGE</label>
+            <textarea id="contact-message" name="message" rows="5" placeholder="ご用件を入力してください" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">SEND MESSAGE</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-icon">
+        <svg class="logo-svg" viewBox="0 0 100 100">
+          <circle class="outer" cx="50" cy="50" r="42" />
+          <circle class="inner" cx="50" cy="50" r="20" />
+        </svg>
+      </span>AETHER <span class="thin"> ALGORITHMS</span>
+      </div>
+      <p class="copyright">&copy; 2025 AETHER ALGORITHMS. All rights reserved.</p>
+      <a href="#" class="back-to-top">BACK TO TOP ↑</a>
+    </div>
+  </footer>
+
+  <!-- 固定トップに戻るボタン -->
+  <div id="scroll-to-top">
+    <span>↑</span>
+  </div>
+
+  <!-- モーダル -->
+  <div id="modal-overlay">
+    <div id="modal-content">
+      <button id="modal-close">×</button>
+      <div class="modal-hero"></div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+  <script src="./js/sketch.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script type="module" src="./js/aether3d.js"></script>
+
+</body>
+
+</html>
