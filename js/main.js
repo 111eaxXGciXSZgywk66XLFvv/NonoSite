@@ -113,8 +113,11 @@ function initHoverBackground() {
 
 function initScrollReveal() {
   const revealElements = document.querySelectorAll('.reveal');
+  const bgLayer = document.getElementById('bg-layer'); // 背景レイヤーを取得
+  const projectsSection = document.getElementById('projects-section'); // プロジェクトセクションを取得
 
   const revealOnScroll = () => {
+    // 1. 通常のふわっと表示アニメーション
     revealElements.forEach(el => {
       const elementTop = el.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
@@ -123,6 +126,18 @@ function initScrollReveal() {
         el.classList.add('active');
       }
     });
+
+    // 2. プロジェクトセクションに来たら背景をボケさせる処理を追加
+    if (projectsSection && bgLayer) {
+      const rect = projectsSection.getBoundingClientRect();
+      
+      // セクションが画面内に半分以上入ってきたら
+      if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+        bgLayer.classList.add('is-focus'); // CSSの .is-focus を適用
+      } else {
+        bgLayer.classList.remove('is-focus');
+      }
+    }
   };
 
   window.addEventListener('scroll', revealOnScroll);
