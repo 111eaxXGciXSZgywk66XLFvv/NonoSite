@@ -62,7 +62,6 @@ function initLoadingScreen() {
 // 2. ホバー背景（既存機能）
 // ==========================================================================
 
-// 81行目からの initHoverBackground をこれに差し替え
 function initHoverBackground() {
   const layers = [
     document.getElementById('bg-layer-1'),
@@ -356,9 +355,9 @@ const modalClose = document.getElementById('modal-close');
 const hoverBg = document.getElementById('hover-bg');
 
 const images = {
-  'bg-1': './images/bg1.png',
-  'bg-2': './images/bg2.png',
-  'bg-3': './images/bg3.png'
+  'bg1': './images/bg1.png',
+  'bg2': './images/bg2.png',
+  'bg3': './images/bg3.png'
 };
 
 const modalContents = {
@@ -433,7 +432,7 @@ document.querySelectorAll('[data-modal]').forEach(card => {
 
     modalBody.innerHTML = modalContents[modalKey] || '';
 
-    // ★ ここがポイント
+ 
     if (imageKey && images[imageKey]) {
       modalHero.style.backgroundImage = `url(${images[imageKey]})`;
       modalHero.classList.remove('is-hidden');
@@ -446,26 +445,20 @@ document.querySelectorAll('[data-modal]').forEach(card => {
     // ① カード拡大
     card.classList.add('is-expanding');
 
-    // ② 背景画像を固定表示
-    if (hoverBg && images[imageKey]) {
-      hoverBg.style.backgroundImage = `url(${images[imageKey]})`;
-      hoverBg.classList.add('is-visible');
-    }
-
-    // ③ モーダル画像
+    // ② モーダル画像
     if (images[imageKey]) {
       modalHero.style.backgroundImage = `url(${images[imageKey]})`;
     }
 
-    // ④ 内容挿入
+    // ③ 内容挿入
     modalBody.innerHTML = modalContents[modalKey] || '';
 
-    // ⑤ 少し遅らせてモーダル表示
+    // ④ 少し遅らせてモーダル表示
     setTimeout(() => {
       modalOverlay.classList.add('is-open');
     }, 200);
 
-    // ⑥ 拡大解除
+    // ⑤ 拡大解除
     setTimeout(() => {
       card.classList.remove('is-expanding');
     }, 600);
@@ -484,8 +477,15 @@ modalOverlay.addEventListener('click', e => {
 
 function closeModal() {
   modalOverlay.classList.remove('is-open');
-  hoverBg.classList.remove('is-visible');
-}
+  
+  if (hoverBg) {
+    hoverBg.classList.remove('is-visible');
+  }
 
+  const layers = document.querySelectorAll('.bg-layer');
+  layers.forEach(layer => {
+    layer.classList.remove('is-visible');
+  });
+}
 
 }

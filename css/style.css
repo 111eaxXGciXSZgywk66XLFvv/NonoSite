@@ -68,8 +68,8 @@ header {
   
   /* グラスモーフィズム効果 */
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -233,7 +233,7 @@ main {
   font-size: 5.0rem;
   font-weight: 500;
   text-shadow: 0 0 10px rgba(0, 242, 255, 0.15);
-  background: linear-gradient(to bottom, #fff, #444);
+  background: linear-gradient(to bottom, #fff, #00f2ff);
   
   /* グラデーションテキスト */
   background-clip: text;
@@ -353,8 +353,8 @@ main {
   
   /* グラスモーフィズム効果 */
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -486,7 +486,7 @@ canvas {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -778,14 +778,14 @@ canvas {
 
 /* Canvas フォーカス時 */
 .canvas-focus {
-  filter: blur(5px);
+  filter: blur(4px);
   transform: scale(1.5);
 }
 
 #aether-3d {
   position: fixed;
   inset: 0;
-  z-index: 1;          /* p5 canvas より上、overlay より下 */
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -822,7 +822,7 @@ canvas {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out; /* ここが「ふわり」の正体 */
+  transition: opacity 0.8s ease-in-out;
 }
 
 .bg-layer.is-visible {
