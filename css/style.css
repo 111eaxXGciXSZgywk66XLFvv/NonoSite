@@ -186,14 +186,14 @@ nav {
     top: 90px;
     right: -100%;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.75);
     width: 100%;
     padding: 30px;
     transition: 0.4s;
   }
   
   nav.open {
-    right: 0;
+    right: -50%;
   }
 }
 
@@ -754,11 +754,13 @@ footer {
   z-index: 0;
   transform-origin: center;
   transition: transform 1.2s ease, filter 1.2s ease;
+  will-change: transform, filter;
+  transform: translateZ(0);
 }
 
 #bg-layer.is-focus {
-  transform: scale(1.15);
-  filter: blur(8px);
+  filter: blur(4px);
+  transform: scale(1.1) translateZ(0);
 }
 
 #bg-layer canvas {
